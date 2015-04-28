@@ -1,0 +1,187 @@
+@import '_settings'
+
+normalize-css()
+base()
+
+*, *:before, *:after
+  box-sizing: border-box
+  
+html
+  height: 100%
+
+body
+  display: table
+  width: 100%
+  text-size-adjust: none
+  word-break: break-word
+
+.page-row
+  display: table-row
+  height: 1px
+ 
+.page-row-expanded { height: 100%; }
+
+img
+  max-width: 100%
+  vertical-align: bottom
+  height: auto
+  
+.langs
+  background: #EAEAEA
+  border-bottom: 1px solid white
+  padding: 0.25em
+  text-align: right
+  a
+    margin-right: 0.5em
+    text-decoration: none
+    color: #777
+    font-size: 0.9em
+    &.active
+      color: #F7A11A
+      
+.navbar
+  position: relative
+  
+.menu-list
+  position: absolute
+  z-index: 1
+  top: 100%
+  width: 100%
+  background: #F25822
+  box-shadow: 0 5px 8px transparentify(darken(@background, 30%))
+  display: none
+  a
+    text-align: center
+    display: block
+    text-decoration: none
+    margin: 1em
+    font-size: 1.5em
+    font-weight: 700
+    color: white
+    
+#menu:target .menu-list
+  display: block
+      
+.logo
+  padding: 0.25em 1em
+  display: inline-block
+  vertical-align: middle
+  
+.menu-btn
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  background: #F7A11A
+  padding: 0.25em 1.5em
+  height: 100%
+  display: inline-block
+  vertical-align: middle
+  img
+    position: relative
+    top: 50%
+    margin-top: -17.5px
+  &.close
+    display: none
+  #menu:target &.close
+    display: inline-block
+  #menu:target &.open
+    display: none
+
+.hero
+  position: relative
+
+.hero-image
+  display: block
+  
+.hero-text
+  position: absolute
+  text-align: center
+  width: 100%
+  top: 50%
+  color: white
+  text-shadow: 0 2px 3px #173239
+  text-transform: uppercase
+  font-weight: 900
+  height: 3em
+  margin-top: -1.5em
+  .line-1
+    font-size: 1em
+  .line-2
+    font-size: 0.5em
+  .line-3
+    font-size: 0.75em
+
+.article-section
+  a
+    text-decoration: none
+    color: #777
+    display: block
+    padding: 1em
+    margin: 0
+    border-bottom: 4px solid #EAEAEA
+    border-top: 2px solid #FFFFFF
+    &.odd
+      background: #F5F4F2
+    &.even
+      background: #FCFBF9
+    &.article-item
+      padding: 2em 1em
+  h2
+    padding: 1em
+    margin: 0
+    color: white
+    font-size: 1em
+  h3
+    font-size: 1em
+    margin: 0
+    span
+      font-weight: normal
+  &.recommended h2
+    background: #FF6600
+  &.pregnancy
+    h2
+      background: #00AFCA
+    .readmore
+      color: #00AFCA
+  &.baby
+    h2
+      background: #6ABE28
+    .readmore
+      color: #6ABE28
+  &.mama-to-mama
+    h2
+      background: #D91F2A
+    .readmore
+      color: #D91F2A
+  .page-category
+    font-size: 0.9em
+    text-transform: uppercase
+    &.pregnancy
+      color: #00AFCA
+    &.baby
+      color: #6ABE28
+    &.mama-to-mama
+      color: #D91F2A
+  .readmore
+    border-bottom: 4px solid #EAEAEA
+    font-weight: 600
+  .readmore img
+    vertical-align: middle
+    margin-top: -4px
+    
+.show-page-category
+  padding: 0.5em 1em
+  color: white
+  &.baby
+    background: #6ABE28
+  &.pregnancy
+    background: #00AFCA
+  &.mama-to-mama
+    background: #D91F2A
+
+.footer
+  background: #F7A11A
+  color: white
+  text-align: center
+  padding: 2em 0

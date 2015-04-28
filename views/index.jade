@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  include partials/_bootstrap
+
+  .hero
+    img(src='/img/mama-hero-img.jpg').hero-image
+    h1.hero-text.
+      <div class='line-1'>advice</div>
+      <div class='line-2'>from</div>
+      <div class='line-3'>experts &amp; parents</div>
+
+  .article-section.recommended
+  
+    h2 Recommended
+
+    for page, i in recommended_pages
+      a(href="#{articles_path}/#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+        div(class="#{page.primary_category_slug}").page-category= page.primary_category
+        h3.
+          #{page.title}:
+          <span>#{page.description}</span>
+
+  for category, i in records.categories
+
+    .article-section(class="#{category.slug}")
+
+      h2= category.title
+
+      for page, i in category.featured_pages
+
+        a(href="#{articles_path}/#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+          h3.
+            #{page.title}:
+            <span>#{page.description}</span>
+
+      a(href="#{category_path}/#{slugify(category.title)}.html").readmore.
+        More #{category.title}
+        <img src="/img/#{category.slug}-readmore.png" />

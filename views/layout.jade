@@ -1,0 +1,35 @@
+doctype html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"
+html(xmlns='http://www.w3.org/1999/xhtml' lang=current_locale_isocode)
+
+  head
+    meta(charset='utf8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+    meta(name='description', content='description of your site')
+    meta(name='author', content= "author of the site")
+    //- uncomment if your site is responsive!
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= _path
+    != css('/')
+
+  body
+
+    .page-row: .header
+      .navbar#menu
+        a(href='/').logo: img(src='/img/logo-mama.png')
+        a(href='#menu').menu-btn.open: img(src='/img/menu-btn.png')
+        a(href='#').menu-btn.close: img(src='/img/menu-btn-open.png')
+        .menu-list
+          a(href='/') Home
+          for category in collections.Category
+            a(href="#{category_path}/#{slugify(category.title)}.html")= category.title
+      .langs
+        for locale in locales 
+          a(href="#{locale.href}" class="#{locale.locale === current_locale ? 'active' : ''}")= locale.name
+
+    .page-row.page-row-expanded: .main
+      block content
+
+    .page-row: .footer.
+      &copy; #{new Date().getFullYear()} | MAMA
+
+    != js()
