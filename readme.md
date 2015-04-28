@@ -8,8 +8,6 @@
 - clone this repo down and `cd` into the folder
 - run `npm install`
 - run `roots watch`
-- ???
-- get money
 
 ### Deploying
 
