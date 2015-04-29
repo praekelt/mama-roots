@@ -24,6 +24,8 @@ module.exports =
     category_path: category_path
   }
 
+  output: config_file.output.en
+
   extensions: [
     records
       categories:

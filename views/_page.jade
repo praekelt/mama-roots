@@ -2,35 +2,25 @@ extends layout
 
 block content
 
-  //- format the page content to display nicely,
-  //- extract first line into it's own prop
-  - item.content = item.content.replace(/\r\n\r\n/g, '\n').split('\n');
-  - item.author_note = item.content.shift();
-  - item.content = item.content.map(function(block) {
-  -   return '<p>' + block + '</p>';
-  - }).join('');
+  if item.primary_category
+    .show-page-category(class="#{item.primary_category.slug}")
+      h3= item.primary_category.title
 
-  //- swap out page category uuid for page category title
-  - collections.Category.forEach(function(category) {
-  -   if (item.primary_category === category.uuid) {
-  -     item.primary_category = category.title;
-  -     item.slug = slugify(item.primary_category);
-  -   }
-  - });
+  .show-page-info
+    h1.show-page-heading= item.title
+    h2.show-page-intro= item.intro_text
+    h3.show-page-date= moment(new Date(item.created_at)).format('Do MMMM YYYY')
 
-  .show-page-category(class="#{item.slug}")
-    h3= item.primary_category
+  .show-page-content !{item.content}
 
-  h1= item.title
-  h2= item.author_note
-  h3= moment(new Date(item.created_at)).format('Do MMMM YYYY')
-
-  div !{item.content}
-
-  .linked-pages
-  for page in item.linked_pages
-    a(href="../#{page.slug}.html")
-      h3.
-        #{page.title}:
-        <span>#{page.description}</span>
-  a(href="..#{category_path}/#{item.slug}.html") More #{item.primary_category}
+  if item.linked_pages
+    .article-section(class="#{item.primary_category ? item.primary_category.slug : ''}")
+      for page, i in item.linked_pages
+        a(href="../#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+          h3.
+            #{page.title}:
+            <span>#{page.description}</span>
+      if item.primary_category
+        a(href="../#{category_path}/#{item.primary_category.slug}.html").readmore.
+          More #{item.primary_category.title}
+          <img src="/img/#{item.primary_category.slug}-readmore.png" />

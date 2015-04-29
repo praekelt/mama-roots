@@ -20,16 +20,15 @@ html(xmlns='http://www.w3.org/1999/xhtml' lang=current_locale_isocode)
         a(href='#').menu-btn.close: img(src='/img/menu-btn-open.png')
         .menu-list
           a(href='/') Home
-          for category in collections.Category
+          for category in navbar_features
             a(href="#{category_path}/#{slugify(category.title)}.html")= category.title
       .langs
-        for locale in locales 
-          a(href="#{locale.href}" class="#{locale.locale === current_locale ? 'active' : ''}")= locale.name
+        for locale in locales
+          a(href="/lang/#{slugify(locale.isocode)}" class="#{locale.locale === current_locale ? 'active' : ''}")= locale.language
+
 
     .page-row.page-row-expanded: .main
       block content
 
     .page-row: .footer.
       &copy; #{new Date().getFullYear()} | MAMA
-
-    != js()

@@ -7,9 +7,9 @@ fs           = require 'fs'
 records      = require 'roots-records'
 config_file  = require './config'
 
-current_locale = 'eng_GB'
-articles_path  = 'articles'
-category_path  = 'articles/category'
+current_locale = 'swa_KE'
+articles_path  = 'makala'
+category_path  = 'makala/aina'
 
 pass = (b, a) ->
   a[b][current_locale].collection
@@ -23,6 +23,8 @@ module.exports =
     articles_path: articles_path
     category_path: category_path
   }
+
+  output: config_file.output.sw
 
   extensions: [
     records

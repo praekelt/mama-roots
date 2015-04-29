@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  include partials/_bootstrap
+  //- include partials/_bootstrap
 
   .hero
     img(src='/img/mama-hero-img.jpg').hero-image
@@ -14,9 +14,9 @@ block content
   
     h2 Recommended
 
-    for page, i in recommended_pages
+    for page, i in records.recommended_pages
       a(href="#{articles_path}/#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
-        div(class="#{page.primary_category_slug}").page-category= page.primary_category
+        div(class="#{page.primary_category.slug}").page-category= page.primary_category.title
         h3.
           #{page.title}:
           <span>#{page.description}</span>

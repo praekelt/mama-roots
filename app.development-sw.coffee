@@ -7,9 +7,9 @@ fs           = require 'fs'
 records      = require 'roots-records'
 config_file  = require './config'
 
-current_locale = 'eng_GB'
-articles_path  = 'articles'
-category_path  = 'articles/category'
+current_locale = 'swa_KE'
+articles_path  = 'makala'
+category_path  = 'makala/aina'
 
 pass = (b, a) ->
   a[b][current_locale].collection
@@ -23,6 +23,8 @@ module.exports =
     articles_path: articles_path
     category_path: category_path
   }
+
+  output: config_file.output.sw
 
   extensions: [
     records
@@ -41,11 +43,14 @@ module.exports =
       recommended_pages:
         file: config_file.data_file
         hook: pass.bind null, 'recommended_pages'
-    css_pipeline(files: config_file.css_pipeline_files, out: 'css/build.css', minify: true, hash: true)
+    css_pipeline(files: config_file.css_pipeline_files)
   ]
 
   stylus:
     use: [axis(), rupture(), autoprefixer()]
+
+  jade:
+    pretty: true
 
   before: (roots) ->
     data = JSON.parse fs.readFileSync config_file.data_file

@@ -1,0 +1,12 @@
+.page-row: .header
+  .navbar#menu
+    a(href='/').logo: img(src='/img/logo-mama.png')
+    a(href='#menu').menu-btn.open: img(src='/img/menu-btn.png')
+    a(href='#').menu-btn.close: img(src='/img/menu-btn-open.png')
+    .menu-list
+      a(href='/') Home
+      for category in records.navbar_features
+        a(href="#{category_path}/#{slugify(category.title)}.html")= category.title
+  .langs
+    for locale in records.locales 
+      a(href="#{locale.href}" class="#{locale.locale === current_locale ? 'active' : ''}")= locale.name

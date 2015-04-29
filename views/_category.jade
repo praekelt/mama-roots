@@ -2,21 +2,12 @@ extends layout
 
 block content
 
-  //- set category a list of articles in ascending order
-  - item.pages = [];
-  - collections.Page.forEach(function(page) {
-  -   if (item.uuid === page.primary_category) {
-  -     item.pages.push(page);
-  -   }
-  - });
-  - item.pages = item.pages.sort(function(a, b) {
-  -   return a.position - b.position;
-  - });
+  h1(class="#{item.slug}").show-category-title= item.title
 
-  h1= item.title
-
-  for page in item.pages
-    a(href="/#{page.slug}")
-      h2= page.title
-      h3= page.description
-      h4= moment(new Date(page.created_at)).format('Do MMMM YYYY')
+  if item.pages
+    .show-category-articles
+      for page, i in item.pages
+        a(href="#{articles_path}/#{page.slug}" class="#{i % 2 === 0 ? 'even' : 'odd'}").show-category-article
+          h2= page.title
+          h3= page.description
+          h4: em= moment(new Date(page.created_at)).format('Do MMMM YYYY')
