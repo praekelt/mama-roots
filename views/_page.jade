@@ -4,23 +4,26 @@ block content
 
   if item.primary_category
     .show-page-category(class="#{item.primary_category.slug}")
-      h3= item.primary_category.title
+      .wrapper
+        h3= item.primary_category.title
 
-  .show-page-info
-    h1.show-page-heading= item.title
-    h2.show-page-intro= item.intro_text
-    h3.show-page-date= moment(new Date(item.created_at)).format('Do MMMM YYYY')
+  .wrapper.show-page
+    .show-page-article
+      .show-page-info
+        h1.show-page-heading= item.title
+        h2.show-page-intro= item.intro_text
+        h3.show-page-date= moment(new Date(item.created_at)).format('Do MMMM YYYY')
 
-  .show-page-content !{item.content}
+      .show-page-content !{item.content}
 
-  if item.linked_pages
-    .article-section(class="#{item.primary_category ? item.primary_category.slug : ''}")
-      for page, i in item.linked_pages
-        a(href="#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
-          h3.
-            #{page.title}:
-            <span>#{page.description}</span>
-      if item.primary_category
-        a(href="../#{category_path}/#{item.primary_category.slug}.html").readmore.
-          More #{item.primary_category.title}
-          <img src="/img/#{item.primary_category.slug}-readmore.png" />
+    if item.linked_pages
+      .show-page-links.article-section(class="#{item.primary_category ? item.primary_category.slug : ''}")
+        for page, i in item.linked_pages
+          a(href="#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+            h3.
+              #{page.title}:
+              <span>#{page.description}</span>
+        if item.primary_category
+          a(href="../#{category_path}/#{item.primary_category.slug}.html").readmore.
+            More #{item.primary_category.title}
+            <img src="/img/#{item.primary_category.slug}-readmore.png" />

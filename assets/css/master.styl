@@ -1,4 +1,5 @@
 @import '_settings'
+@import 'jeet'
 
 normalize-css()
 base()
@@ -14,6 +15,7 @@ body
   width: 100%
   text-size-adjust: none
   word-break: break-word
+  line-height: 1.5
 
 .page-row
   display: table-row
@@ -42,6 +44,15 @@ img
 .navbar
   position: relative
   
+.home-icon
+  display: none
+  +above(600px)
+    display: inline-block
+    vertical-align: middle
+.home-text
+  +above(600px)
+    display: none
+  
 .menu-list
   position: absolute
   z-index: 1
@@ -58,6 +69,32 @@ img
     font-size: 1.5em
     font-weight: 700
     color: white
+  +above(600px)
+    background: #F7A11A
+    top: 0
+    right: 0
+    box-shadow: none
+    display: block
+    height: 4.5em
+    width: auto
+    padding: 1em 0
+    border-radius: 2px 0 0 2px
+    box-shadow: -2px 0 3px rgba(navy, 30%)
+    a
+      position: relative
+      top: 0
+      bottom: 0
+      display: inline-block
+      height: 100%
+      vertical-align: middle
+      font-size: 1em
+      font-weight: 500
+      line-height: 2.5em
+      padding: 0 1em
+      margin: 0
+      border-right: 0.15em solid lighten(#F7A11A, 20%)
+      &.last
+        border: none
     
 #menu:target .menu-list
   display: block
@@ -88,7 +125,7 @@ img
   #menu:target &.open
     display: none
 
-.hero
+.hero .wrapper
   position: relative
 
 .hero-image
@@ -115,6 +152,8 @@ img
     font-size: 0.75em
 
 .article-section
+  .readmore-article
+    display: none
   a
     text-decoration: none
     color: #777
@@ -173,8 +212,9 @@ img
     margin-top: -4px
     
 .show-page-category
-  padding: 0.5em 2em
-  color: white
+  .wrapper
+    padding: 0.5em 2em
+    color: white
   &.baby
     background: #6ABE28
   &.pregnancy
@@ -198,6 +238,8 @@ img
 .show-page-date
   font-size: 1em
   font-weight: 400
+  +above(600px)
+    margin-bottom: 0
   
 .show-page-info
 .show-page-content
@@ -252,3 +294,160 @@ img
   color: white
   text-align: center
   padding: 2em 0
+  
+.category-icon
+  display: none
+  +above(600px)
+    display: block
+    height: 6em
+    width: 6em
+    border-radius: 50%
+    position: absolute
+    top: -1.5em
+    left: 1em
+    .mama-to-mama &
+      background: #D91F2A
+    .baby &
+      background: #6ABE28
+    .pregnancy &
+      background: #00AFCA
+    img
+      position: absolute
+      max-width: 50%
+      height: auto
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+  
+.wrapper
+  center(940px)
+  &.show-page
+    +above(600px)
+      padding: 2em 0 5em 0
+  
+.show-page-article
+  +above(600px)
+    col(3/5)
+    
+.show-page-links
+  +above(600px)
+    col(2/5)
+    margin-top: 1.8em
+    box-shadow: 0 2px 8px 1px rgba(navy, 20%)
+    
+.langs
+  +above(600px)
+    padding: 1em 0
+    display: table-header-group
+    .wrapper
+      padding: 0.5em 0
+    a
+      font-weight: 600
+      font-size: 0.9em
+      margin: 0.5em 0.25em
+
+.nav-outer
+  +above(600px)
+    background: #0099B1
+    padding: 1em 0
+
+.home-page    
+  .nav-outer
+    +above(600px)
+      z-index: 5
+      position: absolute
+      top: 2em
+      width: 100%
+      background: transparent
+    
+.logo
+  +above(600px)
+    padding: 0.5em 2em
+    background: #fff
+    
+.header
+  +above(600px)
+    display: table
+    width: 100%
+    
+.hero
+  +above(600px)
+    background: #01ACC6
+    
+.hero-text
+  +above(600px)
+    font-size: 2.5em
+    top: 60%
+    
+.menu-btn
+  +above(600px)
+    display: none
+    
+.article-section
+  position: relative
+
+.home-page
+  .category-articles .article-content
+    display: none
+  +above(600px)
+    .category-articles .article-content
+      display: block
+      margin-bottom: 2em
+    .article-section
+      .readmore
+        display: none
+      &.baby
+        border-left: 4px solid #6ABE28
+        .readmore-article
+          background: #6ABE28
+      &.pregnancy
+        border-left: 4px solid #00AFCA
+        .readmore-article
+          background: #00AFCA
+      &.mama-to-mama
+        border-left: 4px solid #D91F2A
+        .readmore-article
+          background: #D91F2A
+    .article-section a
+      background: none
+      border: none
+    .category-articles
+      col(4/6)
+      shift(-2/6)
+      margin-top: 2em
+      margin-bottom: 2em
+      .readmore-article
+        display: inline-block
+        padding: 0.5em 2em
+        color: white
+        font-size: 1em
+        font-weight: bold
+        border-radius: 9999px
+        
+      .article-section
+        margin-top: 2em
+        margin-bottom: 2em
+        h2
+          width: 60%
+          padding-left: 10em
+          margin-bottom: 1em
+        h3, h3 span
+          font-weight: bold
+        h3
+          font-size: 1.25em
+          margin-bottom: 1em
+        a
+          padding: 1em 2em
+        .inner-article
+          border-bottom: 4px solid #eee
+          padding: 2em 0
+          padding-top: 0
+          &.last
+            padding: 0
+            border: none
+    .article-section.recommended
+      span(2/6)
+      shift(4/6, 'span')
+      margin-top: 4em

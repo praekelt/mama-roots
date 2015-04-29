@@ -1,5 +1,6 @@
 _            = require 'lodash'
 axis         = require 'axis'
+jeet         = require 'jeet'
 rupture      = require 'rupture'
 autoprefixer = require 'autoprefixer-stylus'
 css_pipeline = require 'css-pipeline'
@@ -45,7 +46,7 @@ module.exports =
   ]
 
   stylus:
-    use: [axis(), rupture(), autoprefixer()]
+    use: [axis(), jeet(), rupture(), autoprefixer()]
 
   before: (roots) ->
     data = JSON.parse fs.readFileSync config_file.data_file

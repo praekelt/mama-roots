@@ -21,6 +21,7 @@ module.exports =
   ignored_files: [
     'readme.md'
     '**/layout.*'
+    '**/*.layout.*'
     '**/_*'
     '.gitignore'
     'ship.*conf'
