@@ -16,7 +16,7 @@ block content
   if item.linked_pages
     .article-section(class="#{item.primary_category ? item.primary_category.slug : ''}")
       for page, i in item.linked_pages
-        a(href="../#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+        a(href="#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
           h3.
             #{page.title}:
             <span>#{page.description}</span>
