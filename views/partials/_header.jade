@@ -10,7 +10,7 @@
             span.home-text Home
             img(src='/img/home-icon.png').home-icon
           for category, i in navbar_features
-            a(href="#{category_path}/#{slugify(category.title)}.html"
+            a(href="/#{category_path}/#{slugify(category.title)}.html"
               class="#{i + 1 === navbar_features.length ? 'last' : ''}")= category.title
   .langs
     .wrapper
