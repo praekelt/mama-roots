@@ -20,7 +20,7 @@ build-dev: clean
 	@roots compile -e development
 	@echo ...done!
 
-build-prod: clean
+build: clean
 	@echo fetching latest MAMA data...
 	@node _query_apis.js
 	@echo compiling production environments...
