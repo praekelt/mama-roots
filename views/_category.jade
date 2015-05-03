@@ -7,7 +7,7 @@ block content
   if item.pages
     .show-category-articles
       for page, i in item.pages
-        a(href="#{articles_path}/#{page.slug}" class="#{i % 2 === 0 ? 'even' : 'odd'}").show-category-article
+        a(href="/#{articles_path}/#{page.slug}.html" class="#{i % 2 === 0 ? 'even' : 'odd'}").show-category-article
           h2= page.title
           h3= page.description
           h4: em= moment(new Date(page.created_at)).format('Do MMMM YYYY')
