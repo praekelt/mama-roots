@@ -14,5 +14,8 @@
               class="#{i + 1 === navbar_features.length ? 'last' : ''}")= category.title
   .langs
     .wrapper
+      - reg = new RegExp('\/' + 'lang' + '\/' + current_locale + '\/')
       for locale in locales
-        a(href="/lang/#{slugify(locale.isocode)}" class="#{locale.locale === current_locale ? 'active' : ''}")= locale.language
+        - translated_path = _path.replace(reg, '/lang/' + locale.isocode + '/').replace('index.html', '')
+        - translated_path = ((locale.isocode === 'en') ? translated_path.replace('makala', 'articles').replace('category', 'aina') : translated_path.replace('articles', 'makala').replace('aina', 'category'))
+        a(href="/lang/#{locale.isocode}#{translated_path}" class="#{locale.locale === current_locale ? 'active' : ''}")= locale.language

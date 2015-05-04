@@ -217,8 +217,9 @@ img
   .wrapper
     padding: 0.5em 2em
     color: white
-    +above(600px)
-      padding: 0.5em 0
+    .category-page &
+      +above(600px)
+        padding: 0.5em 0
   &.baby
     background: #6ABE28
   &.pregnancy
