@@ -1,3 +1,5 @@
+base-font-size = 16px
+
 @import '_settings'
 @import 'jeet'
 
@@ -16,6 +18,7 @@ body
   text-size-adjust: none
   word-break: break-word
   line-height: 1.5
+  font-size: 16px
 
 .page-row
   display: table-row
@@ -116,8 +119,7 @@ img
   vertical-align: middle
   img
     position: relative
-    top: 50%
-    margin-top: -17.5px
+    top: 20%
   &.close
     display: none
   #menu:target &.close
@@ -137,7 +139,7 @@ img
   position: absolute
   text-align: center
   width: 100%
-  top: 50%
+  top: 45%
   color: white
   text-shadow: 0 2px 3px #173239
   text-transform: uppercase
@@ -215,6 +217,8 @@ img
   .wrapper
     padding: 0.5em 2em
     color: white
+    +above(600px)
+      padding: 0.5em 0
   &.baby
     background: #6ABE28
   &.pregnancy
@@ -253,7 +257,7 @@ img
     
 .show-category-title
   font-size: 1em
-  padding: 1em 2em
+  padding: 1em 0
   margin: 0
   color: white
   &.baby
@@ -262,6 +266,12 @@ img
     background: #00AFCA
   &.mama-to-mama
     background: #D91F2A
+    
+.show-category-article
+  +above(600px)
+    col(1/3, cycle: 3)
+    box-shadow: 0 2px 3px 1px rgba(navy, 10%)
+    margin-top: 2em
     
 .show-category-articles
   a
@@ -326,14 +336,22 @@ img
   &.show-page
     +above(600px)
       padding: 2em 0 5em 0
+    .content-section
+      +above(600px)
+        col(3/5)
   
-.show-page-article
-  +above(600px)
-    col(3/5)
+.article-page
+  .logo
+    +above(600px)
+      margin-left: 2em
+  .article-section.recommended
+    display: none
+    +above(600px)
+      display: block
+      col(2/5)
     
 .show-page-links
   +above(600px)
-    col(2/5)
     margin-top: 1.8em
     box-shadow: 0 2px 8px 1px rgba(navy, 20%)
     
@@ -347,6 +365,9 @@ img
       font-weight: 600
       font-size: 0.9em
       margin: 0.5em 0.25em
+      
+.recommended-category-icon
+  display: none
 
 .nav-outer
   +above(600px)
@@ -387,14 +408,24 @@ img
     
 .article-section
   position: relative
+  
+.recommended-readmore
+  display: none
+  +above(600px)
+    display: inline-block
+    vertical-align: middle
+    margin-right: 5px
 
 .home-page
   .category-articles .article-content
+  .recommended .article-content
     display: none
   +above(600px)
     .category-articles .article-content
       display: block
       margin-bottom: 2em
+    .recommended .article-content
+      display: block
     .article-section
       .readmore
         display: none
@@ -414,8 +445,8 @@ img
       background: none
       border: none
     .category-articles
-      col(4/6)
-      shift(-2/6)
+      span(4/7)
+      shift(-3/7, 'span')
       margin-top: 2em
       margin-bottom: 2em
       .readmore-article
@@ -430,7 +461,7 @@ img
         margin-top: 2em
         margin-bottom: 2em
         h2
-          width: 60%
+          width: 80%
           padding-left: 10em
           margin-bottom: 1em
         h3, h3 span
@@ -447,7 +478,62 @@ img
           &.last
             padding: 0
             border: none
-    .article-section.recommended
-      span(2/6)
-      shift(4/6, 'span')
+.article-section.recommended
+  .home-page &
+    +above(600px)
+      span(3/7)
+      shift(4/7, 'span')
       margin-top: 4em
+  .article-page &
+      +above(600px)
+        col(2/5)
+  .article-page &, .home-page &
+    +above(600px)
+      .article-item
+        position: relative
+        display: block
+        padding: 1em
+        .article-content
+          group()
+          .content
+            width: 70%
+            float: left
+        .page-category
+          display: none
+        .recommended-category-label-desktop
+          text-align: center
+          text-transform: uppercase
+          float: right
+          position: relative
+          top: 1em
+          font-size: 0.8em
+        .recommended-category-icon-desktop
+          display: inline-block
+          height: 5em
+          width: 5em
+          border-radius: 50%
+          border: 4px solid #ccc
+          position: relative
+          img
+            position: absolute
+            max-width: 50%
+            height: auto
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+            margin: auto
+        h3, span
+          font-weight: bold
+        h3
+          font-size: 1.15em
+          
+.article-page
+  .logo
+    +above(600px)
+      margin-left: 2em
+  .article-section.recommended
+    display: none
+    +above(600px)
+      display: block
+      col(2/5)

@@ -10,7 +10,7 @@ config_file  = require './config'
 
 current_locale = 'eng_GB'
 articles_path  = 'articles'
-category_path  = 'articles/category'
+category_path  = 'category'
 
 pass = (b, a) ->
   a[b][current_locale].collection
@@ -48,7 +48,10 @@ module.exports =
   stylus:
     use: [axis(), jeet(), rupture(), autoprefixer()]
 
+  server: config_file.server
+
   before: (roots) ->
     data = JSON.parse fs.readFileSync config_file.data_file
     roots.config.locals.navbar_features = data.navbar_features[current_locale].collection
     roots.config.locals.locales = data.locales
+    roots.config.locals.recommended_pages = data.recommended_pages[current_locale].collection

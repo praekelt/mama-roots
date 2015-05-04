@@ -19,8 +19,15 @@ block content
         a(href="#{articles_path}/#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
           div(class="#{page.primary_category.slug}").page-category= page.primary_category.title
           h3.
+            <img src="/img/recommended-readmore.png" class="recommended-readmore"/>
             #{page.title}:
             <span>#{page.description}</span>
+          .article-content
+            .content !{page.content.split('</p><p>').shift() + '</p>'}
+            .recommended-category-label-desktop
+              .recommended-category-icon-desktop
+                img(src="/img/#{page.primary_category.slug}-icon-grey.png")
+              div #{page.primary_category.title}
 
     .category-articles
 
@@ -41,7 +48,7 @@ block content
                   #{page.title}:
                   <span>#{page.description}</span>
 
-                .article-content !{page.content.split('</p><p>').shift() + '...</p>'}
+                .article-content !{page.content.split('</p><p>').shift() + '</p>'}
 
                 .readmore-article Read More
 

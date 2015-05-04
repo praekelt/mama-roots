@@ -1,22 +1,11 @@
-doctype html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"
-html(xmlns='http://www.w3.org/1999/xhtml' lang=current_locale_isocode)
-
-  head
-    meta(charset='utf8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
-    meta(name='description', content='description of your site')
-    meta(name='author', content= "author of the site")
-    //- uncomment if your site is responsive!
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    title= _path
-    != css('/')
+include partials/_doctype
+  
+  include partials/_meta
 
   body.home-page
 
     include partials/_header
 
-    .page-row.page-row-expanded: .main
-      block content
+    include partials/_main
 
-    .page-row: .footer.
-      &copy; #{new Date().getFullYear()} | MAMA
+    include partials/_footer

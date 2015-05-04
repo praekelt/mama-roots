@@ -1,4 +1,4 @@
-extends layout
+extends article.layout
 
 block content
 
@@ -8,22 +8,41 @@ block content
         h3= item.primary_category.title
 
   .wrapper.show-page
-    .show-page-article
-      .show-page-info
-        h1.show-page-heading= item.title
-        h2.show-page-intro= item.intro_text
-        h3.show-page-date= moment(new Date(item.created_at)).format('Do MMMM YYYY')
+    .content-section
+      .show-page-article
+        .show-page-info
+          h1.show-page-heading= item.title
+          h2.show-page-intro= item.intro_text
+          h3.show-page-date= moment(new Date(item.created_at)).format('Do MMMM YYYY')
 
-      .show-page-content !{item.content}
+        .show-page-content !{item.content}
 
-    if item.linked_pages
-      .show-page-links.article-section(class="#{item.primary_category ? item.primary_category.slug : ''}")
-        for page, i in item.linked_pages
-          a(href="#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
-            h3.
-              #{page.title}:
-              <span>#{page.description}</span>
-        if item.primary_category
-          a(href="../#{category_path}/#{item.primary_category.slug}.html").readmore.
-            More #{item.primary_category.title}
-            <img src="/img/#{item.primary_category.slug}-readmore.png" />
+      if item.linked_pages
+        .show-page-links.article-section(class="#{item.primary_category ? item.primary_category.slug : ''}")
+          for page, i in item.linked_pages
+            a(href="#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+              h3.
+                #{page.title}:
+                <span>#{page.description}</span>
+          if item.primary_category
+            a(href="../#{category_path}/#{item.primary_category.slug}.html").readmore.
+              More #{item.primary_category.title}
+              <img src="/img/#{item.primary_category.slug}-readmore.png" />
+
+    .article-section.recommended
+    
+      h2 Recommended
+
+      for page, i in recommended_pages
+        a(href="#{articles_path}/#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+          div(class="#{page.primary_category.slug}").page-category= page.primary_category.title
+          h3.
+            <img src="/img/recommended-readmore.png" class="recommended-readmore"/>
+            #{page.title}:
+            <span>#{page.description}</span>
+          .article-content
+            .content !{page.content.split('</p><p>').shift() + '</p>'}
+            .recommended-category-label-desktop
+              .recommended-category-icon-desktop
+                img(src="/img/#{page.primary_category.slug}-icon-grey.png")
+              div #{page.primary_category.title}

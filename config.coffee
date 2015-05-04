@@ -34,3 +34,6 @@ module.exports =
     'partials'
     'locales'
   ]
+
+  server:
+    clean_urls: true

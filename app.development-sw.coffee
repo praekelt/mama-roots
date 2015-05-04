@@ -10,7 +10,7 @@ config_file  = require './config'
 
 current_locale = 'swa_KE'
 articles_path  = 'makala'
-category_path  = 'makala/aina'
+category_path  = 'aina'
 
 pass = (b, a) ->
   a[b][current_locale].collection
@@ -53,7 +53,10 @@ module.exports =
   jade:
     pretty: true
 
+  server: config_file.server
+
   before: (roots) ->
     data = JSON.parse fs.readFileSync config_file.data_file
     roots.config.locals.navbar_features = data.navbar_features[current_locale].collection
     roots.config.locals.locales = data.locales
+    roots.config.locals.recommended_pages = data.recommended_pages[current_locale].collection
