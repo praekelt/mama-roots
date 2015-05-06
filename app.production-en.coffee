@@ -44,7 +44,7 @@ module.exports =
       recommended_pages:
         file: config_file.data_file
         hook: pass.bind null, 'recommended_pages'
-    css_pipeline(files: config_file.css_pipeline_files, out: 'css/build.css', minify: true, hash: true)
+    css_pipeline(files: config_file.css_pipeline_files, out: 'css/build.css', minify: true)
   ]
 
   stylus:
