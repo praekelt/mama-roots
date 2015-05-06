@@ -28,6 +28,4 @@ build: clean
 		echo $$environment ; \
 		roots compile -e $$environment ; \
 	done
-	@echo production
-	@roots compile -e production
 	@echo ...done!
