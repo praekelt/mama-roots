@@ -57,27 +57,33 @@ img
     display: none
   
 .menu-list
-  position: absolute
-  z-index: 1
-  top: 100%
-  width: 100%
-  background: #F25822
-  box-shadow: 0 5px 8px transparentify(darken(@background, 30%))
-  display: none
+  display: block
   a
-    text-align: center
-    display: block
     text-decoration: none
-    margin: 1em
-    font-size: 1.5em
-    font-weight: 700
     color: white
+  +below(600px)
+    position: absolute
+    z-index: 1
+    top: 100%
+    width: 100%
+    background: #F25822
+    box-shadow: 0 5px 8px transparentify(darken(@background, 30%))
+    display: none
+    a
+      text-align: center
+      display: block
+      text-decoration: none
+      margin: 1em
+      font-size: 1.5em
+      font-weight: 700
+      color: white
   +above(600px)
     background: #F7A11A
     top: 0
     right: 0
     box-shadow: none
-    display: block
+    display: inline-block
+    float: right
     height: 4.5em
     width: auto
     padding: 1em 0
@@ -101,6 +107,8 @@ img
     
 #menu:target .menu-list
   display: block
+  +above(600px)
+    display: none
       
 .logo
   padding: 0.25em 2em
@@ -111,30 +119,32 @@ img
     margin-right: 0.25em
   
 .menu-btn
-  position: absolute
-  top: 0
-  bottom: 0
-  right: 0
-  left: 70%
-  width: 30%
-  background: #F7A11A
-  padding: 0.25em 1.5em
-  height: 100%
-  display: inline-block
-  vertical-align: middle
-  text-align: center
-  img
-    position: relative
-    top: 30%
-    left: 10%
+  display: none
+  +below(600px)
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 70%
+    width: 30%
+    background: #F7A11A
+    padding: 0.25em 1.5em
+    height: 100%
     display: inline-block
     vertical-align: middle
-  &.close
-    display: none
-  #menu:target &.close
-    display: inline-block
-  #menu:target &.open
-    display: none
+    text-align: center
+    img
+      position: relative
+      top: 30%
+      left: 10%
+      display: inline-block
+      vertical-align: middle
+    &.close
+      display: none
+    #menu:target &.close
+      display: inline-block
+    #menu:target &.open
+      display: none
 
 .hero .wrapper
   position: relative
@@ -413,8 +423,9 @@ img
     top: 60%
     
 .menu-btn
-  +above(600px)
-    display: none
+  display: none
+  +below(600px)
+    display: inline-block
     
 .article-section
   position: relative
