@@ -106,20 +106,29 @@ img
   padding: 0.25em 2em
   display: inline-block
   vertical-align: middle
+  +below(600px)
+    padding: 0.5em 1em
+    margin-right: 0.25em
   
 .menu-btn
   position: absolute
   top: 0
   bottom: 0
   right: 0
+  left: 70%
+  width: 30%
   background: #F7A11A
   padding: 0.25em 1.5em
   height: 100%
   display: inline-block
   vertical-align: middle
+  text-align: center
   img
     position: relative
-    top: 20%
+    top: 30%
+    left: 10%
+    display: inline-block
+    vertical-align: middle
   &.close
     display: none
   #menu:target &.close
