@@ -1,0 +1,57 @@
+extends index.layout
+
+block content
+
+  .hero: .wrapper
+    img(src='/img/mama-hero-img.jpg').hero-image
+    h1.hero-text.
+      <div class='line-1'>advice</div>
+      <div class='line-2'>from</div>
+      <div class='line-3'>experts &amp; parents</div>
+
+  .wrapper
+
+    .article-section.recommended
+    
+      h2 Recommended
+
+      for page, i in records.recommended_pages
+        a(href="#{articles_path}/#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+          div(class="#{page.primary_category.slug}").page-category= page.primary_category.title
+          h3.
+            <img src="/img/recommended-readmore.png" class="recommended-readmore"/>
+            #{page.title}:
+            <span>#{page.description}</span>
+          .article-content
+            .content !{page.content.split('</p><p>').shift() + '</p>'}
+            .recommended-category-label-desktop
+              .recommended-category-icon-desktop
+                img(src="/img/#{page.primary_category.slug}-icon-grey.png")
+              div #{page.primary_category.title}
+
+    .category-articles
+
+      for category, i in records.categories
+
+        .article-section(class="#{category.slug}")
+
+          .category-icon
+            img(src="/img/#{category.slug}-icon-white.png")
+
+          h2= category.title
+
+          for page, i in category.featured_pages
+
+            a(href="#{articles_path}/#{page.slug}.html" class="#{i % 2 ? 'even' : 'odd'}").article-item
+              .inner-article(class="#{i + 1 === category.featured_pages.length ? 'last' : ''}")
+                h3.
+                  #{page.title}:
+                  <span>#{page.description}</span>
+
+                .article-content !{page.content.split('</p><p>').shift() + '</p>'}
+
+                .readmore-article Read More
+
+          a(href="#{category_path}/#{slugify(category.title)}.html").readmore.
+            More #{category.title}
+            <img src="/img/#{category.slug}-readmore.png" />

@@ -1,0 +1,14 @@
+extends category.layout
+
+block content
+
+  div(class="#{item.slug}").show-page-category: .wrapper
+    h1.show-category-title= item.title
+
+  if item.pages
+    .show-category-articles: .wrapper
+      for page, i in item.pages
+        a(href="/#{articles_path}/#{page.slug}.html" class="#{i % 2 === 0 ? 'even' : 'odd'}").show-category-article
+          h2= page.title
+          h3= page.description
+          h4: em= moment(new Date(page.created_at)).format('Do MMMM YYYY')

@@ -1,0 +1,21 @@
+.page-row: .header
+  .nav-outer
+    .wrapper
+      .navbar#menu
+        a(href='/').logo: img(src='/img/logo-mama.png')
+        a(href='#menu').menu-btn.open: img(src='/img/menu-btn.png')
+        a(href='#').menu-btn.close: img(src='/img/menu-btn-open.png')
+        .menu-list
+          a(href='/')
+            span.home-text Home
+            img(src='/img/home-icon.png').home-icon
+          for category, i in navbar_features
+            a(href="/#{category_path}/#{slugify(category.title)}.html"
+              class="#{i + 1 === navbar_features.length ? 'last' : ''}")= category.title
+  .langs
+    .wrapper
+      - reg = new RegExp('\/' + 'lang' + '\/' + current_locale + '\/')
+      for locale in locales
+        - translated_path = _path.replace(reg, '/lang/' + locale.isocode + '/').replace('index.html', '')
+        - translated_path = ((locale.isocode === 'en') ? translated_path.replace('makala', 'articles').replace('category', 'aina') : translated_path.replace('articles', 'makala').replace('aina', 'category'))
+        a(href="/lang/#{locale.isocode}#{translated_path}" class="#{locale.locale === current_locale ? 'active' : ''}")= locale.language
