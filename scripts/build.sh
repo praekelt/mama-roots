@@ -1,6 +1,8 @@
 #!/bin/bash
 REPO_DIR="$WORKSPACE/$REPO"
 
+set -e
+
 cd $REPO_DIR
 npm install lodash
 npm install axis
