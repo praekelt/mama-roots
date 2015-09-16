@@ -6,7 +6,7 @@
     "axis": "0.3.x",
     "charge": "0.0.3",
     "coffee-script": "1.8.x",
-    "css-pipeline": "0.2.x",
+    "css-pipeline": "0.3.x",
     "jade": "1.x",
     "js-pipeline": "0.2.x",
     "marked": "0.3.x",
