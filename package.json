@@ -17,7 +17,7 @@
     "when": "^3.7.3"
   },
   "scripts": {
-    "start": "npm link || TRUE && charge ./public --p ${PORT} 8080"
+    "start": "npm link || true && charge ./public --p ${PORT} 8080"
   },
   "devDependencies": {
     "jeet": "^6.1.2",
